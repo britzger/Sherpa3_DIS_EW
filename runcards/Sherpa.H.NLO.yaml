@@ -1,0 +1,67 @@
+# Sherpa configuration for DIS production
+# set up beams for HERA
+BEAMS: [11,2212]
+BEAM_ENERGIES: [60, 7000]
+
+# disable lepton PDF
+PDF_SET: [None, Default]
+
+# disable beam remnants for FO calc
+BEAM_REMNANTS: false
+# disable parton shower
+SHOWER_GENERATOR: None
+
+# disable QED corrections
+ME_QED:
+  Enabled: false
+
+YFS:
+  MODE: None
+
+TAGS:
+  RUNID: 1246
+  SCF: 1.0
+
+RANDOM_SEED: $(RUNID)
+EVENT_GENERATION_MODE: Weighted
+
+# scale definition for FO calculation
+# assume mH time being
+SCALES: VAR{$(SCF)*sqr(125.)}
+
+PARTICLE_DATA:
+  4: {Massive: false}
+  5: {Massive: true}
+
+PARTICLE_CONTAINERS:
+  993:
+    Name: qs
+    Flavours: [1,2,3,4,-1,-2,-3,-4,21]
+  995:
+    Name: bs
+    Flavours: [5,-5]
+
+# ep -> nu/e + jet + H @ NLO QCD
+PROCESSES:
+
+## charged current
+- 11 993 -> 12 993 25:
+    NLO_Mode: Fixed_Order
+    NLO_Order: {QCD: 1, EW: 0}
+    Order: {QCD: 0, EW: 3}
+    ME_Generator: Amegic
+    Loop_Generator: OpenLoops
+
+## neutral current
+#- 11 993 -> 11 993 25:
+#    NLO_Mode: Fixed_Order
+#    NLO_Order: {QCD: 1, EW: 0}
+#    Order: {QCD: 0, EW: 3}
+#    ME_Generator: Amegic
+#    Loop_Generator: OpenLoops
+
+# minimum constraint for Q2
+SELECTORS:
+- [Q2, 11, 12, 4, 1000000]
+#- [Q2, 11, 11, 4, 1000000]
+
