@@ -1,0 +1,71 @@
+# Sherpa configuration for DIS production
+# set up beams for HERA
+BEAMS: [11,2212]
+BEAM_ENERGIES: [27.6, 920]
+
+PDF_SET: [None, Default]
+
+ME_QED:
+  Enabled: false
+
+YFS:
+  MODE: None
+
+TAGS:
+  RUNID: 1246
+
+ANALYSIS_OUTPUT: Analysis/Ana_S3beta_Cluster_H_$(RUNID)
+RANDOM_SEED: $(RUNID)
+EVENT_GENERATION_MODE: Weighted
+
+SCALES: VAR{sqr(175)}
+
+SHOWER_GENERATOR: None
+FRAGMENTATION: None
+BEAM_REMNANTS: None
+
+PARTICLE_DATA:
+  4: {Massive: false}
+  5: {Massive: false}
+
+PARTICLE_CONTAINERS:
+  993:
+    Name: qs
+    Flavours: [1,2,3,4,5,-1,-2,-3,-4,-5,21]
+  994:
+    Name: cs
+    Flavours: [4,-4]
+  995:
+    Name: bs
+    Flavours: [5,-5]
+  996:
+    Name: ts
+    Flavours: [6,-6]
+
+PROCESSES:
+## charged current: eb -> nu + t
+- 11 995 -> 12 996:
+    Order: {QCD: 0, EW: 2}
+    ME_Generator: Amegic
+
+## neutral current: eb -> e + t + W
+- 11 995 -> 11 996 24:
+    Order: {QCD: 0, EW: 3}
+    ME_Generator: Amegic
+
+- 11 995 -> 11 996 -24:
+    Order: {QCD: 0, EW: 3}
+    ME_Generator: Amegic
+
+
+# minimum constraint for Q2
+SELECTORS:
+- [Q2, 11, 12, 4, 20000]
+- [Q2, 11, 11, 4, 20000]
+
+ANALYSIS: Rivet
+RIVET:
+  --ignore-beams: 1
+  ANALYSES:
+    - H1_EmptyHemisphere
+
