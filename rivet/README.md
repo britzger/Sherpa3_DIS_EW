@@ -25,7 +25,7 @@ Once successfully compiled this should produce a RivetAnalysis.so shared lib, no
 path to this lib to the RIVET_ANALYSIS_PATH variable, e.g. via
 
 ```
-export RIVET_ANALYSIS_PATH=\<path where the lib resides\>:$RIVET_ANALYSIS_PATH
+export RIVET_ANALYSIS_PATH=<path where the lib resides>:$RIVET_ANALYSIS_PATH
 ```
 
 this should do the trick ... 
