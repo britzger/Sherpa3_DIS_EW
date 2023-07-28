@@ -1,6 +1,6 @@
 # Electroweak processes in DIS with Sherpa3
 
-In this repository, a few useful run cards and instructions for electroweak processes with Sherpa 3 are collected.
+In this repository, runcards and instructions for electroweak processes with Sherpa 3 are collected.
 
 The webpage for Sherpa 3 is found at https://sherpa-team.gitlab.io/sherpa/v3.0.0beta1/
 
