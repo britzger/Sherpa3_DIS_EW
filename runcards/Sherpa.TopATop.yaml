@@ -14,7 +14,7 @@ YFS:
 TAGS:
   RUNID: 1246
 
-ANALYSIS_OUTPUT: Analysis/Ana_S3beta_Cluster_H_$(RUNID)
+ANALYSIS_OUTPUT: Analysis/Ana_S3beta_Cluster_TT_$(RUNID)
 RANDOM_SEED: $(RUNID)
 EVENT_GENERATION_MODE: Weighted
 
@@ -22,7 +22,7 @@ SCALES: VAR{4.*sqr(175)}
 
 SHOWER_GENERATOR: None
 FRAGMENTATION: None
-BEAM_REMNANTS: None
+BEAM_REMNANTS: false
 
 PARTICLE_DATA:
   4: {Massive: false}
@@ -42,7 +42,7 @@ PARTICLE_CONTAINERS:
     Name: ts
     Flavours: [6,-6]
 
-# e -> nu + t
+# ep -> nu + t + tb
 PROCESSES:
 ## neutral current
 - 11 993 -> 11 996 996:

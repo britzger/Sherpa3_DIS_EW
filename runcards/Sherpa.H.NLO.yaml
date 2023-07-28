@@ -10,6 +10,8 @@ PDF_SET: [None, Default]
 BEAM_REMNANTS: false
 # disable parton shower
 SHOWER_GENERATOR: None
+# disable hadronisation
+FRAGMENTATION: None
 
 # disable QED corrections
 ME_QED:
@@ -53,15 +55,15 @@ PROCESSES:
     Loop_Generator: OpenLoops
 
 ## neutral current
-#- 11 993 -> 11 993 25:
-#    NLO_Mode: Fixed_Order
-#    NLO_Order: {QCD: 1, EW: 0}
-#    Order: {QCD: 0, EW: 3}
-#    ME_Generator: Amegic
-#    Loop_Generator: OpenLoops
+- 11 993 -> 11 993 25:
+   NLO_Mode: Fixed_Order
+   NLO_Order: {QCD: 1, EW: 0}
+   Order: {QCD: 0, EW: 3}
+   ME_Generator: Amegic
+   Loop_Generator: OpenLoops
 
 # minimum constraint for Q2
 SELECTORS:
-- [Q2, 11, 12, 4, 1000000]
-#- [Q2, 11, 11, 4, 1000000]
+- [Q2, 11, 12, 1, 1000000]
+- [Q2, 11, 11, 4, 1000000]
 

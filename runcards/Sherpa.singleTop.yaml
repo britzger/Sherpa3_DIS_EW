@@ -14,7 +14,7 @@ YFS:
 TAGS:
   RUNID: 1246
 
-ANALYSIS_OUTPUT: Analysis/Ana_S3beta_Cluster_H_$(RUNID)
+ANALYSIS_OUTPUT: Analysis/Ana_S3beta_Cluster_t_$(RUNID)
 RANDOM_SEED: $(RUNID)
 EVENT_GENERATION_MODE: Weighted
 
@@ -22,7 +22,7 @@ SCALES: VAR{sqr(175)}
 
 SHOWER_GENERATOR: None
 FRAGMENTATION: None
-BEAM_REMNANTS: None
+BEAM_REMNANTS: false
 
 PARTICLE_DATA:
   4: {Massive: false}
@@ -56,7 +56,6 @@ PROCESSES:
 - 11 995 -> 11 996 -24:
     Order: {QCD: 0, EW: 3}
     ME_Generator: Amegic
-
 
 # minimum constraint for Q2
 SELECTORS:
