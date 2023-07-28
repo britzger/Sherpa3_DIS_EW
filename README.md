@@ -26,7 +26,7 @@ In a second step, on can calcuate the cross section by executing
 The option `-e 0` deactivates the event generation.
 
 
-For NLO matrix elements, one has to compile the libraries first, and it is useful to do the calculation with MPI support
+For NLO matrix elements, on in general when the Amegic matrix element generator is used, one has to compile the libraries first, and it is useful to do the calculation with MPI support
 ```
    $ Sherpa -e 0 Sherpa.H.NLO.yaml
    $ ./makelibs
