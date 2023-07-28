@@ -51,5 +51,5 @@ PROCESSES:
 
 # minimum constraint for Q2
 SELECTORS:
-- [Q2, 11, 12, 4, 1000000]
+- [Q2, 11, 12, 1, 1000000]
 - [Q2, 11, 11, 4, 1000000]
