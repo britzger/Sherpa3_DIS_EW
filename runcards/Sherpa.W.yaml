@@ -1,0 +1,93 @@
+# Sherpa configuration for DIS production
+# set up beams for HERA
+BEAMS: [11,2212]
+BEAM_ENERGIES: [10, 7000]
+
+PDF_SET: [None, Default]
+
+ME_QED:
+  Enabled: false
+
+YFS:
+  MODE: None
+
+TAGS:
+  RUNID: 1246
+
+ANALYSIS_OUTPUT: Analysis/Ana_S3beta_Cluster_W_$(RUNID)
+RANDOM_SEED: $(RUNID)
+EVENT_GENERATION_MODE: Weighted
+
+SCALES: METS{MU_F2}{MU_R2}{MU_Q2}
+
+##SCALE_VARIATIONS: 4*
+
+MEPS:
+  CORE_SCALE: Default
+
+PARTICLE_DATA:
+  4: {Massive: false}
+  5: {Massive: false}
+
+PARTICLE_CONTAINERS:
+  993:
+    Name: qs
+    Flavours: [1,2,3,4,-1,-2,-3,-4,21]
+#  994:
+#    Name: cs
+#    Flavours: [4,-4]
+#  995:
+#    Name: bs
+#    Flavours: [5,-5]
+
+
+# ep -> nu/e + jet + W
+PROCESSES:
+## charged current
+- 11 993 -> 12 993 -24:
+    Order: {QCD: 0, EW: 3}
+    ME_Generator: Comix
+
+## neutral current
+- 11 993 -> 11 993 -24:
+    Order: {QCD: 0, EW: 3}
+    ME_Generator: Comix
+
+## gluon induced charged current
+#- 11 21 -> 12 993 993 25:
+#    Order: {QCD: 1, EW: 3}
+#    ME_Generator: Comix
+
+# minimum constraint for Q2
+SELECTORS:
+- [Q2, 11, 12, 1, 1000000]
+- [Q2, 11, 11, 4, 1000000]
+
+ANALYSIS: Rivet
+RIVET:
+  ANALYSES:
+    - H1_EmptyHemisphere
+
+AHADIC:
+    KT_0    : 1.2138582877204982
+    ALPHA_G : 0.9691567812499744
+    ALPHA_L : 3.920384097178617
+    BETA_L  : 0.18546287859608931
+    GAMMA_L : 0.47701678740028847
+    ALPHA_D : 3.4192062500365976
+    BETA_D  : 0.7193055765252618
+    GAMMA_D : 0.769372134271701
+    ALPHA_H : -0.6016460860051647
+    BETA_H  : 1.8376314636819298
+    GAMMA_H : 0.024432730838269932
+    STRANGE_FRACTION  : 0.46108284088922324
+    BARYON_FRACTION   : 0.17259624147861996
+    P_QS_by_P_QQ_norm : 0.5687986222985489
+    P_SS_by_P_QQ_norm : 0.056303305013438505
+    P_QQ1_by_P_QQ0    : 0.6009461046278534
+
+    # tuning parameter
+    ALPHA_B : 14.180870381289179
+    BETA_B  : 1.591802882314808
+    GAMMA_B : 8.113829773346268
+
