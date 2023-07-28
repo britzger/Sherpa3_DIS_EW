@@ -21,9 +21,12 @@ EVENT_GENERATION_MODE: Weighted
 # use Q2 as scale
 SCALES: VAR{Abs2(p[0]+p[2])}
 
-SHOWER_GENERATOR: None
-FRAGMENTATION: None
+# disable beam remnants for FO calc
 BEAM_REMNANTS: false
+# disable parton shower
+SHOWER_GENERATOR: None
+# disable hadronisation
+FRAGMENTATION: None
 
 PARTICLE_DATA:
   4: {Massive: false}
@@ -38,13 +41,19 @@ PARTICLE_CONTAINERS:
 PROCESSES:
 ## charged current
 - 11 993 -> 12 993:
+    NLO_Mode: Fixed_Order
+    NLO_Order: {QCD: 1, EW: 0}
     Order: {QCD: 0, EW: 2}
-    ME_Generator: Comix
+    ME_Generator: Amegic
+    Loop_Generator: OpenLoops
 
 ## neutral current
 - 11 993 -> 11 993:
+    NLO_Mode: Fixed_Order
+    NLO_Order: {QCD: 1, EW: 0}
     Order: {QCD: 0, EW: 2}
-    ME_Generator: Comix
+    ME_Generator: Amegic
+    Loop_Generator: OpenLoops
 
 # minimum constraint for Q2
 SELECTORS:
