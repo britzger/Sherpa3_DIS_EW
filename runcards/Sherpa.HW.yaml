@@ -1,0 +1,55 @@
+# Sherpa configuration for DIS production
+# set up beams for HERA
+BEAMS: [11,2212]
+BEAM_ENERGIES: [10, 7000]
+
+PDF_SET: [None, Default]
+
+ME_QED:
+  Enabled: false
+
+YFS:
+  MODE: None
+
+TAGS:
+  RUNID: 1246
+
+ANALYSIS_OUTPUT: Analysis/Ana_S3beta_Cluster_HW_$(RUNID)
+RANDOM_SEED: $(RUNID)
+EVENT_GENERATION_MODE: Weighted
+
+SCALES: VAR{sqr(125+91)}
+
+SHOWER_GENERATOR: None
+FRAGMENTATION: None
+BEAM_REMNANTS: false
+
+PARTICLE_DATA:
+  4: {Massive: false}
+  5: {Massive: false}
+  25: {Width: 0}
+  24: {Width: 0}
+  23: {Width: 0}
+  
+PARTICLE_CONTAINERS:
+  993:
+    Name: qs
+    Flavours: [1,2,3,4,-1,-2,-3,-4,21]
+
+# ep -> nu/e + jet + H + W
+# discard Yukawa type contributions here
+PROCESSES:
+## charged current
+- 11 993 -> 12 993 -24 25:
+    Order: {QCD: 0, EW: 4}
+    ME_Generator: Amegic
+
+## neutral current
+- 11 993 -> 11 993 -24 25:
+    Order: {QCD: 0, EW: 4}
+    ME_Generator: Amegic
+
+# minimum constraint for Q2
+SELECTORS:
+- [Q2, 11, 12, 4, 1000000]
+- [Q2, 11, 11, 4, 1000000]
