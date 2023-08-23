@@ -34,6 +34,7 @@ SCALES: VAR{$(SCF)*sqr(125.)}
 PARTICLE_DATA:
   4: {Massive: false}
   5: {Massive: true}
+  25: {Width: 0}
 
 PARTICLE_CONTAINERS:
   993:
