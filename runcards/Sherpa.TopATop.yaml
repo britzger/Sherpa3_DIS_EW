@@ -27,6 +27,7 @@ BEAM_REMNANTS: false
 PARTICLE_DATA:
   4: {Massive: false}
   5: {Massive: false}
+  6: {Width: 0}
 
 PARTICLE_CONTAINERS:
   993:
